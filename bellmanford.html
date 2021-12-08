@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="bellmanford.js"></script>
+</head>
+
+<body>
+    <h2>Bellmanford calculator</h2>
+    <h3>What algorithm is used?</h3>
+    I use Bellmanford's algorithm,
+    which follows the pseudo-code below.
+    <p class="myp">bellmanford(){
+    for(i ∈ {all nodes}) d[i] ← (i == s ? 0 : ∞)
+    for(i ∈ {all nodes}) pre[i] ← (i == s ? s : Ø)
+    V_T ← {s}
+    while(V_T ≠ Ø){
+        Select i ∈ V_T
+        V_T ← V_T ＼ {i}
+        for(j ∈ {All nodes adjacent to i}){
+            if(d[j] > d[i] + c[i][j]){
+                d[j] ← d[i] + c[i][j]
+                pre[j] ← i
+                V_T ← V_T ∪ {j}
+            }
+        }
+
+        /* 
+           For every node in each loop, display the result. 
+           (The result is printed in the form "d[i](pre[i])")
+        */
+    }
+}</p>
+
+    <h3>How to use?</h3>
+    Please enter the information for one edge per line, 
+    separated by one space.The names of the nodes are optional, 
+    as long as they are no more than 8 characters long.<br>
+    (Example)<br><br>
+    The example input for the following directed graph is given 
+    as an initial value in the input form.<br>
+    
+    <img src="bellmanford_example.png">
+
+    <h3>Caluculate!!</h3>
+    <form name="addEdge" id="addEdge" method="GET">
+        Start from <input type="text" name="start" value="s" maxlength="8">.<br><br>
+        Enter edges here!<br>
+        <textarea type="text" class="mytextarea" name="graph" placeholder="Enter edges here!" maxlength="30000">s i1 1
+s i2 5
+i1 i2 3
+i1 i3 4
+i3 i2 -2</textarea><br>
+        <input type="button" value="Go" onclick="GoButton();">
+    </form>
+
+    <h3>Note</h3>
+    Note: The maximum number of loops, maximum number of vertices 
+    and maximum number of edges displayed are all 1000.<br><br>
+
+    <div id='output'></div>
+</body>
+
+</html>

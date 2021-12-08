@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.myp{
+    width: 60%;
+    padding: 10px;
+    border: 2px solid blue;
+    white-space: pre-wrap;
+    font-family:monospace, serif;
+    color: brown;
+}
+.mytextarea{
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    margin: 0.5em 0;
+    height: 10em;
+}
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: solid gray 1px;
+    padding: 5px;
+}
+
+table tr:first-child td:first-child {
+    height: 20px;
+    width: 60px;
+    padding: 0;
+}
+
+.diagonal {
+    height: 100%;
+    width: 100%;
+    border-top: solid gray 1px;
+}
+
+.rightDown {
+    transform: matrix(1, 0.75, 0, 1, 0, 15);
+}
