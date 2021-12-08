@@ -83,7 +83,7 @@ function GoButton() {
     table = new Array(N + 1);
     for (i = 0; i <= N; i++) table[i] = new Array(1000 + 10).fill("Infinity");
 
-    table[0][0] = "<p style='font-size: 10px; text-align: right'>loop</p><div class='diagonal rightDown'></div><p style='font-size: 10px;'>node</p>";
+    table[0][0] = "<p style='font-family:monospace, serif; padding: 3px;'>loop→<br>node↓</p>";
     for (i = 1; i <= 1009; i++) {
         table[0][i] = i - 1;
 
