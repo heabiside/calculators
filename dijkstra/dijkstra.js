@@ -24,6 +24,13 @@ function trimming(string) {
     return string;
 }
 
+function check_weight(w) {
+    if (w > 1000000000) {
+        document.getElementById('output').innerHTML = "Weight must be less than 10^9.";
+        throw new Error("Too large weight.");
+    }
+}
+
 // Output table according to the input
 function GoButton() {
     maxNodes = 100;
@@ -60,12 +67,15 @@ function GoButton() {
 
         from = trimming(an_edge_info[0]);
         to = trimming(an_edge_info[1]);
-        weight = parseInt(an_edge_info[2]);
+        weight = parseFloat(an_edge_info[2]);
 
         if(weight < 0){
             document.getElementById('output').innerHTML = "Dijkstra method cannot cope with negative weights.";
             throw new Error('Invalid input.');
         }
+
+        check_weight(weight);
+
         try {
 
             if (!nodes_name_to_id.has(from)) {
@@ -117,7 +127,7 @@ function GoButton() {
         maxLoop++;
 
 
-        from = 0, from_id = 0, min_d = Infinity;
+        from = d.indexOf(Infinity), from_id = V_T.indexOf(from), min_d = Infinity;
         for(i = 0; i < V_T.length; i++) {
             if(min_d > d[V_T[i]]){
                 min_d = d[V_T[i]];
@@ -125,6 +135,8 @@ function GoButton() {
                 from_id = i;
             }
         }
+
+        if(from === -1 || from_id === -1) continue;
 
         V_P.push(from);
         V_T.splice(from_id, 1);
@@ -142,12 +154,11 @@ function GoButton() {
 
         // change table
         for (i = 1; i <= N; i++) {
-            if (d[i - 1] === Infinity) table[i][column_id] = "Infinity";
-            else {
+            if (d[i - 1] !== Infinity) { // table[i][column_id] = "Infinity";
                 table[i][column_id + 1] = `${d[i - 1]}(${nodes_id_to_name[pred[i - 1]]})`;
-                if (V_P.indexOf(i - 1) !== -1)
-                    table[i][column_id + 1] = "<p style='color: red'>" + table[i][column_id + 1] + "</p>";
             }
+            if (V_P.indexOf(i - 1) !== -1)
+                table[i][column_id + 1] = "<p style='color: red'>" + table[i][column_id + 1] + "</p>";
         }
         column_id++;
     }
@@ -157,15 +168,12 @@ function GoButton() {
     target = document.getElementById('output');
     htmlString = "<table border='1'>";
     for (i = 0; i <= N; i++) {
-        allInfinity = true;
         htmlString = htmlString + "<tr>";
         for (j = 0; j <= maxLoop+1; j++) {
             if (i === 0 && j === 0) htmlString = htmlString + "<td>" + table[i][j] + "</td>";
             else {
                 htmlString = htmlString + "<td>" + table[i][j] + "</td>";
             }
-
-            if (table[i][j] !== "Infinity") allInfinity = false;
         }
         htmlString = htmlString + "</tr>";
     }

@@ -18,10 +18,16 @@ function escape_html(string) {
 function trimming(string) {
     string = escape_html(string);
     if (string.length > 8) {
-        document.getElementById('output').innerHTML = "Vertex names are too long. (max 8 characters).";
-        throw new Error("Vertex names must be no more than 8 characters long.");
+        document.getElementById('output').innerHTML = "Node names are too long. (max 8 characters).";
+        throw new Error("Node names must be no more than 8 characters long.");
     }
     return string;
+}
+function check_weight(w) {
+    if(Math.abs(w)>1000000000){
+        document.getElementById('output').innerHTML = "Absolute value of the weight must be less than 10^9.";
+        throw new Error("Too large absolute value of the weight.");
+    }
 }
 
 // Output table according to the input
@@ -60,7 +66,10 @@ function GoButton() {
 
         from = trimming(an_edge_info[0]);
         to = trimming(an_edge_info[1]);
-        weight = parseInt(an_edge_info[2]);
+        weight = parseFloat(an_edge_info[2]);
+
+        check_weight(weight);
+
         try {
 
             if (!nodes_name_to_id.has(from)) {
