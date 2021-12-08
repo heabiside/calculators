@@ -7,5 +7,5 @@ digraph bellmanford{
     s -> i2[label = "5"];
     i1 -> i2[label = "3"];
     i1 -> i3[label = "4"];
-    i3 -> i2[label = "-2"];
+    i3 -> i2[label = "2"];
 }
