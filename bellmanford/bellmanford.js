@@ -26,8 +26,8 @@ function trimming(string) {
 
 // Output table according to the input
 function GoButton() {
-    maxNodes = 1000;
-    Edges_cnt = 1000;
+    maxNodes = 100;
+    Edges_cnt = 100;
     document.getElementById('output').innerHTML = "";
 
     start = document.forms['addEdge'].elements['start'].value;
@@ -40,7 +40,7 @@ function GoButton() {
     all_edges_infomation = document.forms['addEdge'].elements['graph'].value.split(/\r\n|\n/);
     if (all_edges_infomation.length <= Edges_cnt) Edges_cnt = all_edges_infomation.length;
     else {
-        document.getElementById('output').innerHTML = "Maximum number of sides is 1000.";
+        document.getElementById('output').innerHTML = "Maximum number of edges is 100.";
         throw new Error('Invalid input.');
     }
 
@@ -81,10 +81,10 @@ function GoButton() {
     /*-----bellmanford-----*/
     N = nodes_name_to_id.size;
     table = new Array(N + 1);
-    for (i = 0; i <= N; i++) table[i] = new Array(1000 + 10).fill("Infinity");
+    for (i = 0; i <= N; i++) table[i] = new Array(100 + 10).fill("Infinity");
 
     table[0][0] = "<p style='font-family:monospace, serif; padding: 3px;'>loop→<br>node↓</p>";
-    for (i = 1; i <= 1009; i++) {
+    for (i = 1; i <= 109; i++) {
         table[0][i] = i - 1;
 
         if (i === 1) table[1][i] = `<p style="color: red">0(${start})</p>`;
@@ -104,7 +104,7 @@ function GoButton() {
     column_id = 1, update_cnt = 0, maxLoop = 0;
     while (V_T.length !== 0) {
         // Force close after 1000 loops
-        if (maxLoop >= 1000) break;
+        if (maxLoop >= 100) break;
         maxLoop++;
 
 

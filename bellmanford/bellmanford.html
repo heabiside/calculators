@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css" type="text/css">
+    <link rel="stylesheet" href="../style.css" type="text/css">
     <script type="text/javascript" src="./bellmanford.js"></script>
 </head>
 
@@ -12,26 +12,26 @@
     I use Bellmanford's algorithm,
     which follows the pseudo-code below.
     <p class="myp">bellmanford(){
-        for(i ∈ {all nodes}) d[i] ← (i == s ? 0 : ∞)
-        for(i ∈ {all nodes}) pre[i] ← (i == s ? s : Ø)
-        V_T ← {s}
-        while(V_T ≠ Ø){
+    for(i ∈ {all nodes}) d[i] ← (i == s ? 0 : ∞)
+    for(i ∈ {all nodes}) pre[i] ← (i == s ? s : Ø)
+    V_T ← {s}
+    while(V_T ≠ Ø){
         Select i ∈ V_T
         V_T ← V_T ＼ {i}
         for(j ∈ {All nodes adjacent to i}){
-        if(d[j] > d[i] + c[i][j]){
-        d[j] ← d[i] + c[i][j]
-        pre[j] ← i
-        V_T ← V_T ∪ {j}
-        }
+            if(d[j] > d[i] + c[i][j]){
+                d[j] ← d[i] + c[i][j]
+                pre[j] ← i
+                V_T ← V_T ∪ {j}
+            }
         }
 
         /*
         For every node in each loop, display the result.
         (The result is printed in the form "d[i](pre[i])")
         */
-        }
-        }</p>
+    }
+}</p>
 
     <h3>How to use?</h3>
     Please enter the information for one edge per line,
@@ -48,7 +48,7 @@
     <form name="addEdge" id="addEdge" method="GET">
         Start from <input type="text" name="start" value="s" maxlength="8">.<br><br>
         Enter edges here!<br>
-        <textarea type="text" class="mytextarea" name="graph" placeholder="Enter edges here!" maxlength="30000">s i1 1
+        <textarea type="text" class="mytextarea" name="graph" placeholder="Enter edges here!" maxlength="3000">s i1 1
 s i2 5
 i1 i2 3
 i1 i3 4
@@ -57,8 +57,9 @@ i3 i2 -2</textarea><br>
     </form>
 
     <h3>Note</h3>
+    ・The nodes marked in red in the table are the elements of V_T in the above algorithm.<br>
     ・The maximum number of loops, maximum number of nodes
-    and maximum number of edges displayed are all 1000.<br>
+    and maximum number of edges displayed are all 100.<br>
     ・You can get the source code <a href="https://github.com/heabiside/calculators">here</a>.<br>
     ・<a
         href="https://www.amazon.co.jp/Text-%E6%95%B0%E7%90%86%E6%9C%80%E9%81%A9%E5%8C%96-%E4%B9%85%E9%87%8E-%E8%AA%89%E4%BA%BA/dp/4274212440/ref=sr_1_4?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E6%95%B0%E7%90%86%E6%9C%80%E9%81%A9%E5%8C%96&qid=1638940052&sr=8-4">References</a><br><br>
