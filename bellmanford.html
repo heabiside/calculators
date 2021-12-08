@@ -12,36 +12,36 @@
     I use Bellmanford's algorithm,
     which follows the pseudo-code below.
     <p class="myp">bellmanford(){
-    for(i ∈ {all nodes}) d[i] ← (i == s ? 0 : ∞)
-    for(i ∈ {all nodes}) pre[i] ← (i == s ? s : Ø)
-    V_T ← {s}
-    while(V_T ≠ Ø){
+        for(i ∈ {all nodes}) d[i] ← (i == s ? 0 : ∞)
+        for(i ∈ {all nodes}) pre[i] ← (i == s ? s : Ø)
+        V_T ← {s}
+        while(V_T ≠ Ø){
         Select i ∈ V_T
         V_T ← V_T ＼ {i}
         for(j ∈ {All nodes adjacent to i}){
-            if(d[j] > d[i] + c[i][j]){
-                d[j] ← d[i] + c[i][j]
-                pre[j] ← i
-                V_T ← V_T ∪ {j}
-            }
+        if(d[j] > d[i] + c[i][j]){
+        d[j] ← d[i] + c[i][j]
+        pre[j] ← i
+        V_T ← V_T ∪ {j}
+        }
         }
 
-        /* 
-           For every node in each loop, display the result. 
-           (The result is printed in the form "d[i](pre[i])")
+        /*
+        For every node in each loop, display the result.
+        (The result is printed in the form "d[i](pre[i])")
         */
-    }
-}</p>
+        }
+        }</p>
 
     <h3>How to use?</h3>
-    Please enter the information for one edge per line, 
-    separated by one space.The names of the nodes are optional, 
+    Please enter the information for one edge per line,
+    separated by one space.The names of the nodes are optional,
     as long as they are no more than 8 characters long.
     If there is an edge of weight w from edge a to edge b, the input will look like "a b w".<br><br>
     (Example)<br>
-    The example input for the following directed graph is given 
+    The example input for the following directed graph is given
     as an initial value in the input form.<br>
-    
+
     <img src="./bellmanford_example.png">
 
     <h3>Caluculate!!</h3>
@@ -57,10 +57,11 @@ i3 i2 -2</textarea><br>
     </form>
 
     <h3>Note</h3>
-    ・The maximum number of loops, maximum number of nodes 
+    ・The maximum number of loops, maximum number of nodes
     and maximum number of edges displayed are all 1000.<br>
     ・You can get the source code <a href="https://github.com/heabiside/calculators">here</a>.<br>
-    ・<a href="https://www.amazon.co.jp/Text-%E6%95%B0%E7%90%86%E6%9C%80%E9%81%A9%E5%8C%96-%E4%B9%85%E9%87%8E-%E8%AA%89%E4%BA%BA/dp/4274212440/ref=sr_1_4?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E6%95%B0%E7%90%86%E6%9C%80%E9%81%A9%E5%8C%96&qid=1638940052&sr=8-4">References</a><br><br>
+    ・<a
+        href="https://www.amazon.co.jp/Text-%E6%95%B0%E7%90%86%E6%9C%80%E9%81%A9%E5%8C%96-%E4%B9%85%E9%87%8E-%E8%AA%89%E4%BA%BA/dp/4274212440/ref=sr_1_4?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E6%95%B0%E7%90%86%E6%9C%80%E9%81%A9%E5%8C%96&qid=1638940052&sr=8-4">References</a><br><br>
 
     <div id='output'></div>
 </body>
