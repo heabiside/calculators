@@ -98,16 +98,11 @@ function GoButton() {
     for (i = 1; i <= N; i++)
         table[i][0] = escape_html(nodes_id_to_name[i - 1]);
 
-    d = new Array(N).fill(Infinity - 1);
+    d = new Array(N).fill(Infinity);
     d[0] = 0;
 
     pred = new Array(N);
     pred[0] = 0;
-
-    console.log(Infinity-1);
-    console.log(Infinity);
-    console.log(1000000000);
-    console.log(1000000000*100);
 
     V=[];
     for(i=0;i<N;i++) V.push(i);
@@ -122,7 +117,7 @@ function GoButton() {
         maxLoop++;
 
 
-        from = -1, from_id = -1, min_d = Infinity;
+        from = 0, from_id = 0, min_d = Infinity;
         for(i = 0; i < V_T.length; i++) {
             if(min_d > d[V_T[i]]){
                 min_d = d[V_T[i]];
@@ -130,8 +125,6 @@ function GoButton() {
                 from_id = i;
             }
         }
-
-        if(from === -1 || from_id === -1) continue;
 
         V_P.push(from);
         V_T.splice(from_id, 1);
@@ -149,13 +142,12 @@ function GoButton() {
 
         // change table
         for (i = 1; i <= N; i++) {
-            if (d[i - 1] === Infinity - 1) 
-                table[i][column_id + 1] = "Infinity";
-            else 
+            if (d[i - 1] === Infinity) table[i][column_id] = "Infinity";
+            else {
                 table[i][column_id + 1] = `${d[i - 1]}(${nodes_id_to_name[pred[i - 1]]})`;
-
-            if (V_P.indexOf(i - 1) !== -1)
-                table[i][column_id + 1] = "<p style='color: red'>" + table[i][column_id + 1] + "</p>";
+                if (V_P.indexOf(i - 1) !== -1)
+                    table[i][column_id + 1] = "<p style='color: red'>" + table[i][column_id + 1] + "</p>";
+            }
         }
         column_id++;
     }
@@ -173,7 +165,7 @@ function GoButton() {
                 htmlString = htmlString + "<td>" + table[i][j] + "</td>";
             }
 
-            if (table[i][j].toString().indexOf("Infinity") !== -1) allInfinity = false;
+            if (table[i][j] !== "Infinity") allInfinity = false;
         }
         htmlString = htmlString + "</tr>";
     }
