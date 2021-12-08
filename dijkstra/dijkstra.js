@@ -133,6 +133,7 @@ function GoButton() {
             if(d[V_T[i]] === Infinity) {
                 from = V_T[i];
                 from_id = i;
+                break;
             }
         }
         
