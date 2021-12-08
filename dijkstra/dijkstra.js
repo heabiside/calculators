@@ -115,7 +115,7 @@ function GoButton() {
     pred[0] = 0;
 
     V=[];
-    for(i=0;i<N;i++) V.push(i);
+    for(i = 0; i < N; i++) V.push(i);
 
     V_P = [], V_T = V;
 
@@ -128,6 +128,14 @@ function GoButton() {
 
 
         from = d.indexOf(Infinity), from_id = V_T.indexOf(from), min_d = Infinity;
+        
+        for (i = 0; i < V_T.length; i++) {
+            if(d[V_T[i]] === Infinity) {
+                from = V_T[i];
+                from_id = i;
+            }
+        }
+        
         for(i = 0; i < V_T.length; i++) {
             if(min_d > d[V_T[i]]){
                 min_d = d[V_T[i]];
@@ -135,8 +143,6 @@ function GoButton() {
                 from_id = i;
             }
         }
-
-        if(from === -1 || from_id === -1) continue;
 
         V_P.push(from);
         V_T.splice(from_id, 1);
