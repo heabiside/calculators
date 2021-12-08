@@ -61,6 +61,11 @@ function GoButton() {
         from = trimming(an_edge_info[0]);
         to = trimming(an_edge_info[1]);
         weight = parseInt(an_edge_info[2]);
+
+        if(weight < 0){
+            document.getElementById('output').innerHTML = "Dijkstra method cannot cope with negative weights.";
+            throw new Error('Invalid input.');
+        }
         try {
 
             if (!nodes_name_to_id.has(from)) {
