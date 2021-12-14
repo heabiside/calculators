@@ -25,6 +25,10 @@ function trimming(string) {
 }
 
 function check_weight(w) {
+    if (Number.isNaN(w)) {
+        document.getElementById('output').innerHTML = "Weight must be a number.";
+        throw new Error('Invalid input.');
+    }
     if (w > 1000000000) {
         document.getElementById('output').innerHTML = "Weight must be less than 10^9.";
         throw new Error("Too large weight.");

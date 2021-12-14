@@ -24,6 +24,11 @@ function trimming(string) {
     return string;
 }
 function check_weight(w) {
+    console.log(w);
+    if(Number.isNaN(w)) {
+        document.getElementById('output').innerHTML = "Weight must be a number.";
+        throw new Error('Invalid input.');
+    }
     if(Math.abs(w)>1000000000){
         document.getElementById('output').innerHTML = "Absolute value of the weight must be less than 10^9.";
         throw new Error("Too large absolute value of the weight.");
